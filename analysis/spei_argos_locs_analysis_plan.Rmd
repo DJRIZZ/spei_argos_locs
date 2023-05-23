@@ -1,0 +1,79 @@
+---
+title: "Spectacled Eider Satellite Transmitter Data Analysis Plan"
+author: "DJRIZZ"
+date: "2023-02-03"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+Primary question of interest:
+
+Has the timing and distribution of spectacled eiders changed in comparison to what Petersen et al. (1999) and Sexson et al. (2014, 2016) found. We have particular interest in changes in movements associated with changes in sea ice.
+
+Research Questions and How To Answer Them
+
+1. Distance traveled during annual cycle and seasons within cycle
+  'antiMotum' package to fit state-space model to filter and interpolate track of each marked eider (Jonsen et al. 2023)
+  'move' package to estimate track distance (Setyawan et al. 2022)
+  
+2. Areas of concentrated use each part of the annual cycle (breeding, molt, winter, pre-breeding)
+  'antiMotum' package to fit state-space model to filter and interpolate track of each marked eider (Jonsen et al. 2023)
+  'ctmm' package to estimate 50% and 95% utilization distributions accounting for autocorrelation (Setyawan et al. 2022)
+
+3. Timing of movements: departure dates breeding area, molting area, wintering area
+   'antiMotum' package to fit state-space model to filter and interpolate track of each marked eider and assign movement persistence parameter for        each location (Jonsen et al. 2023)
+
+4. Environmental factors (wind dir, air temp, sea ice cover) correlated with departure timing from the wintering area
+  'antiMotum' package to fit state-space model to filter and interpolate track of each marked eider and assign movement persistence mixed-effects linear models with movement persistence parameter as response (Lamb et al. 2020, Setyawan et al. 2022, Jonsen et al.2019, Jonsen et al. 2023
+  
+Data considerations
+Given duty cycles with 5-6 breaks between locations, missed transmission periods will create breaks of > 10 d which we may not be able interpolate. In these cases, those breaks would be used as new start and end points for interpolated tracks with an unknown movement track during the break. We'll need to look at how frequently and when these breaks happen to get a sense of how they might affect the analysis. 
+  
+## Available data
+USGS data collected by Petersen et al. (1999) and Sexson et al. (2014, 2016)
+  
+```{r}
+# load USGS data
+locs_usgs <- read.csv("data/spectacledEider_USGS_ASC_argos.csv", header = T)
+#names(locs_usgs)
+
+# how many locations by PTT ID?
+table(locs_usgs$tag.local.identifier)
+id_usgs_ptts <- unique(locs_usgs$tag.local.identifier)
+count_usgs_ptts <- length(id_usgs_ptts)
+
+# how many PTTs by month
+#str(locs_usgs)
+
+# convert date
+timestamp <- as.POSIXct(locs_usgs$timestamp, format = "%m/%d/%y %H:%M", tz = "UTC") 
+locs_usgs$timestamp <- timestamp
+
+# extract year
+locs_usgs$year <- format(locs_usgs$timestamp, format = "%Y")
+
+# extract month
+locs_usgs$month <- format(locs_usgs$timestamp, format = "%m")
+
+# create month_year var
+locs_usgs$yr_mo <- paste(locs_usgs$year, locs_usgs$month, sep = "_")
+
+# ptt count by month across years
+id_month <- aggregate(data = locs_usgs,                # Applying aggregate
+                          tag.local.identifier ~ month,
+                          function(tag.local.identifier) length(unique(tag.local.identifier)))
+print(id_month)
+
+# ptt count by year_month
+id_year_month <- aggregate(data = locs_usgs,                # Applying aggregate
+                          tag.local.identifier ~ yr_mo,
+                          function(tag.local.identifier) length(unique(tag.local.identifier)))
+print(id_year_month)
+```
+Across years (1994-1996, 2008-2012), sample sizes of transmitters during Feb, Mar, and Apr were 65, 61, and 52, respectively. In the 1990s, very few transmitters functioned into the winter months, with locations available for only 1 transmitter in 1995. Transmitters persistence was greatly improved during the 2009-2012 period, with 39 transmitters in March of 2009, 21 transmitters in March 2010, 16 transmitters in March 2011, and 5 transmitters in March 2012.
+
+To do:
+-Plot locations by year-month
+-identify periods between locations within an individual track of > 10 d: how many and when do these breaks occur?
