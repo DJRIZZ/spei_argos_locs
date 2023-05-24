@@ -16,7 +16,7 @@
 <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -30,8 +30,11 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -226,6 +229,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -261,15 +267,32 @@ $(document).ready(function () {
 <li>
   <a href="license.html">License</a>
 </li>
+<li>
+  <a href="spei_argos_locs_analysis_plan.html">Analysis Plan</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/DJRIZZ/spei_argos_locs">
+    <span class="fab fa-github"></span>
+     
+    Source code
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
 <div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
 
@@ -349,13 +372,15 @@ results.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong015ecdc">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomDJRIZZspeiargoslocstree2e3e535fb4ece0912b8af5656202e238f7441a80targetblank2e3e535a">
 <span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>Repository version:</strong> 015ecdc
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/DJRIZZ/spei_argos_locs/tree/2e3e535fb4ece0912b8af5656202e238f7441a80" target="_blank">2e3e535</a>
 </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrong015ecdc"
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomDJRIZZspeiargoslocstree2e3e535fb4ece0912b8af5656202e238f7441a80targetblank2e3e535a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -364,7 +389,8 @@ and connecting the code version to the results is critical for
 reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version 015ecdc.
+The results in this page were generated with repository version
+<a href="https://github.com/DJRIZZ/spei_argos_locs/tree/2e3e535fb4ece0912b8af5656202e238f7441a80" target="_blank">2e3e535</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -382,7 +408,6 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/.Rhistory
-    Ignored:    analysis/site_libs/
     Ignored:    code/.Rhistory
     Ignored:    data/spectacledEider_USGS_ASC_argos-reference-data.csv
     Ignored:    data/spectacledEider_USGS_ASC_argos.csv
@@ -393,7 +418,7 @@ Untracked files:
 
 Unstaged changes:
     Modified:   .gitignore
-    Modified:   analysis/spei_argos_locs_analysis_plan.Rmd
+    Modified:   analysis/_site.yml
 
 </code></pre>
 <p>
@@ -441,10 +466,27 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/DJRIZZ/spei_argos_locs/5684074f84fe8a2e2865f17f2799ab2f611db54c/docs/license.html" target="_blank">5684074</a>
+</td>
+<td>
+DJRIZZ
+</td>
+<td>
+2023-05-23
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
-015ecdc
+<a href="https://github.com/DJRIZZ/spei_argos_locs/blob/015ecdc84568c444adf7e14a6eed1e77efc1bb8c/analysis/license.Rmd" target="_blank">015ecdc</a>
 </td>
 <td>
 DJRIZZ
@@ -461,7 +503,7 @@ initial commit
 Rmd
 </td>
 <td>
-0515cfc
+<a href="https://github.com/DJRIZZ/spei_argos_locs/blob/0515cfccf99e9661142b6bb82b985792f698486d/analysis/license.Rmd" target="_blank">0515cfc</a>
 </td>
 <td>
 DJRIZZ
@@ -531,6 +573,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
