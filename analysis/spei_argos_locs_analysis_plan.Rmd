@@ -1,7 +1,7 @@
 ---
 title: "Spectacled Eider Satellite Transmitter Data Analysis Plan"
-author: "DJRIZZ"
-date: "2023-02-03"
+author: 
+date: "`r Sys.Date()`"
 output: workflowr::wflow_html
 editor_options:
   chunk_output_type: console
@@ -12,7 +12,7 @@ Primary question of interest:
 
 Has the timing and distribution of spectacled eiders changed in comparison to what Petersen et al. (1999) and Sexson et al. (2014, 2016) found. We have particular interest in changes in movements associated with changes in sea ice.
 
-Research Questions and How To Answer Them
+The analysis will be based on the approach used by Lamb et al. (2020) and uses state-space models to interpolate movement tracks of individuals and assigns a movement persistence parameter to each location. Specific estimates of interested:
 
 1. Distance traveled during annual cycle and seasons within cycle
   'antiMotum' package to fit state-space model to filter and interpolate track of each marked eider (Jonsen et al. 2023)
