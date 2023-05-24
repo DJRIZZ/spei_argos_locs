@@ -1,7 +1,7 @@
-name: "SPEI argos locations"
+name: SPEI argos locations
 output_dir: ../docs
 navbar:
-  title: "SPEI argos locations"
+  title: SPEI argos locations
   left:
   - text: Home
     href: index.html
@@ -9,6 +9,10 @@ navbar:
     href: about.html
   - text: License
     href: license.html
+  right:
+  - icon: fab fa-github
+    text: Source code
+    href: https://github.com/DJRIZZ/spei_argos_locs
 output:
   workflowr::wflow_html:
     toc: yes
